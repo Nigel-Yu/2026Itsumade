@@ -15,10 +15,10 @@ import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.kinematics.SwerveModulePosition;
 import edu.wpi.first.math.kinematics.SwerveModuleState;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.util.Constants.DriveConstants;
-import frc.robot.util.Constants.DriveConstants.DriveMotor;
-import frc.robot.util.Constants.DriveConstants.SteerMotor;
-import frc.robot.util.Kraken;
+import frc.robot.utils.Kraken;
+import frc.robot.utils.Constants.DriveConstants;
+import frc.robot.utils.Constants.DriveConstants.DriveMotor;
+import frc.robot.utils.Constants.DriveConstants.SteerMotor;
 
 public class SwerveModule extends SubsystemBase {
 	private CANBus canbus;

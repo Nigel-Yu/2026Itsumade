@@ -1,4 +1,4 @@
-package frc.robot.util;
+package frc.robot.utils;
 
 import edu.wpi.first.math.geometry.Translation2d;
 import edu.wpi.first.wpilibj.PS4Controller;
@@ -6,8 +6,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.InstantCommand;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import edu.wpi.first.wpilibj2.command.button.Trigger;
+import frc.robot.commands.AlignToHub;
 import frc.robot.subsystems.Drivetrain;
-import frc.robot.util.Constants.DriveConstants;
+import frc.robot.utils.Constants.DriveConstants;
 
 public class OI {
     private static OI instance;
@@ -29,7 +30,8 @@ public class OI {
         PSButton.onTrue(new InstantCommand(() -> Drivetrain.getInstance().resetGyro()));    
         
         Trigger SquareButton = new JoystickButton(controller, PS4Controller.Button.kSquare.value);
-
+        SquareButton.whileTrue(new AlignToHub());
+        
         Trigger xButton = new JoystickButton(controller, PS4Controller.Button.kCross.value);
 
         Trigger circleButton = new JoystickButton(controller, PS4Controller.Button.kCircle.value);

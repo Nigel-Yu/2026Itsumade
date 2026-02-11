@@ -1,4 +1,4 @@
-package frc.robot.util;
+package frc.robot.utils;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -8,6 +8,27 @@ import edu.wpi.first.math.kinematics.SwerveDriveKinematics;
 import edu.wpi.first.math.util.Units;
 
 public class Constants {
+    public static class HubAlignConstants {
+                public static final double kRotationalP = 0.1;
+        public static final double kRotationalI = 0;
+        public static final double kRotationalD = 0;
+        public static final double kRotationLowerP = 0.04;
+        public static final double kRotationalErrorThreshold = 0.5;
+        public static final double kRotationLowerPThreshold = 1.3;
+        public static final double kRotationalFF = 0;
+
+        public static final double kLateralP = 0;
+        public static final double kLateralI = 0;
+        public static final double kLateralD = 0;
+        public static final double kLateralFF = 0;
+        public static final double kLateralErrorThreshold = 0;
+
+        public static final double kDepthP = 0;
+        public static final double kDepthI = 0;
+        public static final double kDepthD = 0;
+        public static final double kDepthFF = 0;
+        public static final double kDepthErrorThreshold = 0;
+    }
     public static final class AlignmentConstants {
         public static final Map<Integer, Double> kReefDesiredAngle = new HashMap<>() {
             {

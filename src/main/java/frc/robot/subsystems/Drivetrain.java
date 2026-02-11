@@ -14,9 +14,9 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.smartdashboard.Field2d;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
-import frc.robot.util.Constants.DriveConstants;
-import frc.robot.util.OI;
-import frc.robot.util.RobotMap;
+import frc.robot.utils.OI;
+import frc.robot.utils.RobotMap;
+import frc.robot.utils.Constants.DriveConstants;
 
 public class Drivetrain extends SubsystemBase {
     private static Drivetrain instance;

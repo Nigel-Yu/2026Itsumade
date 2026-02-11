@@ -7,7 +7,7 @@ package frc.robot;
 import frc.robot.commands.SwerveDriveCommand;
 import frc.robot.subsystems.Drivetrain;
 import frc.robot.subsystems.SwerveModule;
-import frc.robot.util.OI;
+import frc.robot.utils.OI;
 
 import java.io.ObjectInputFilter.Config;
 
