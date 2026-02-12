@@ -11,7 +11,7 @@ public class LimelightFrontMiddle extends Limelight {
         //     CameraConstants.kFrontMiddleCamPitchDeg,
         //     false
         // );
-        super("limelight-shooter", 0.3892028, 0, true);
+        super("limelight-shoot", 0.3892028, 0, true);
     }
 
     public static LimelightFrontMiddle getInstance() {

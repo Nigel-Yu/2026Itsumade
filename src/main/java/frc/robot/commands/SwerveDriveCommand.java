@@ -12,12 +12,12 @@ public class SwerveDriveCommand extends Command {
     
     public SwerveDriveCommand() {
         drivetrain = Drivetrain.getInstance();
-        oi = OI.getInstance();
         addRequirements(drivetrain);
     }
     
     @Override
     public void initialize() {
+        oi = OI.getInstance();
     }
     
     @Override

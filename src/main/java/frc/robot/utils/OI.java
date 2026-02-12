@@ -32,11 +32,11 @@ public class OI {
         Trigger SquareButton = new JoystickButton(controller, PS4Controller.Button.kSquare.value);
         SquareButton.whileTrue(new AlignToHub());
         
-        Trigger xButton = new JoystickButton(controller, PS4Controller.Button.kCross.value);
+        // Trigger xButton = new JoystickButton(controller, PS4Controller.Button.kCross.value);
 
-        Trigger circleButton = new JoystickButton(controller, PS4Controller.Button.kCircle.value);
+        // Trigger circleButton = new JoystickButton(controller, PS4Controller.Button.kCircle.value);
 
-        Trigger muteButton = new JoystickButton(controller, 15);
+        // Trigger muteButton = new JoystickButton(controller, 15);
     }
     
     public double getForward() {

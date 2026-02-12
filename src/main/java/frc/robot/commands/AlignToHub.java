@@ -41,7 +41,7 @@ public class AlignToHub extends Command {
         rotationalI = HubAlignConstants.kRotationalI;
         rotationalD = HubAlignConstants.kRotationalD;
         rotationalFF = HubAlignConstants.kRotationalFF;
-        rotationalLowerP = HubAlignConstants.kRotationLowerP;
+        rotationalLowerP = HubAlignConstants.kRotationalLowerP;
         rotationalErrorThreshold = HubAlignConstants.kRotationalErrorThreshold;
         rotationalLowerPThreshold = HubAlignConstants.kRotationLowerPThreshold;
         rotationalPIDController = new PIDController(rotationalP, rotationalI, rotationalD);
@@ -53,25 +53,27 @@ public class AlignToHub extends Command {
         // SmartDashboard.putNumber("rotationalLowerP", 0);
         // SmartDashboard.putNumber("rotationalErrorThreshold", 0);
         // SmartDashboard.putNumber("rotationalLowerPThreshold", 0);
-        // SmartDashboard.putNumber("rotationalError", 0);
+        SmartDashboard.putNumber("rotationalError", 0);
         // rotationalPIDController.enableContinuousInput(-180, 180);
 
-        // lateralP = HubAlignConstants.kLateralP;
-        // lateralI = HubAlignConstants.kLateralI;
-        // lateralD = HubAlignConstants.kLateralD;
-        // lateralFF = HubAlignConstants.kLateralFF;
-        // lateralErrorThreshold = HubAlignConstants.kLateralErrorThreshold;
-        SmartDashboard.putNumber("lateralP", 0);
-        SmartDashboard.putNumber("lateralI", 0);
-        SmartDashboard.putNumber("lateralD", 0);
-        SmartDashboard.putNumber("lateralFF", 0);
-        SmartDashboard.putNumber("lateralErrorThreshold", 0);
-        SmartDashboard.putNumber("lateralError", 0);
-        SmartDashboard.putNumber("lateralLowerPThreshold", lateralLowerPThreshold);
-        SmartDashboard.putNumber("lateralLowerP", lateralLowerP);
+        lateralP = HubAlignConstants.kLateralP;
+        lateralI = HubAlignConstants.kLateralI;
+        lateralD = HubAlignConstants.kLateralD;
+        lateralFF = HubAlignConstants.kLateralFF;
+        lateralErrorThreshold = HubAlignConstants.kLateralErrorThreshold;
+        lateralLowerP = HubAlignConstants.kLateralLowerP;
+        lateralLowerPThreshold = HubAlignConstants.kLateralLowerPThreshold;
         lateralPIDController = new PIDController(lateralP, lateralI, lateralD);
-        SmartDashboard.putNumber("lateral", lateral);
-        SmartDashboard.putNumber("rotational", rotation);
+
+        // SmartDashboard.putNumber("lateralP", 0);
+        // SmartDashboard.putNumber("lateralI", 0);
+        // SmartDashboard.putNumber("lateralD", 0);
+        // SmartDashboard.putNumber("lateralFF", 0);
+        // SmartDashboard.putNumber("lateralErrorThreshold", 0);
+        SmartDashboard.putNumber("lateralError", 0);
+        // SmartDashboard.putNumber("lateralLowerPThreshold", 0);
+        // SmartDashboard.putNumber("lateralLowerP", 0);
+
         // depthP = HubAlignConstants.kDepthP;
         // depthI = HubAlignConstants.kDepthI;
         // depthD = HubAlignConstants.kDepthD;
@@ -79,62 +81,70 @@ public class AlignToHub extends Command {
         // depthErrorThreshold = HubAlignConstants.kDepthErrorThreshold;
         // depthPIDController = new PIDController(depthP, depthI, depthD);
 
+        SmartDashboard.putNumber("lateral", 0);
+        SmartDashboard.putNumber("rotational", 0);
+        
         addRequirements(drivetrain);
         SmartDashboard.putNumber("Target April Tag ID", 0);
     }
 
     @Override
     public void initialize() {
-        Pose2d tagPose = Limelight.getAprilTagPose((int)SmartDashboard.getNumber("TargetApril Tag ID", 0));
+        Pose2d tagPose = Limelight.getAprilTagPose((int)SmartDashboard.getNumber("Target April Tag ID", 4));
+        
         desiredAngle = 0;
-        desiredX = 0;
-       // desiredX = tagPose.getX();
         // rotationalP = SmartDashboard.getNumber("rotationalP", 0);
         // rotationalI = SmartDashboard.getNumber("rotationalI", 0);
         // rotationalD = SmartDashboard.getNumber("rotationalD", 0);
         // rotationalFF = SmartDashboard.getNumber("rotationalFF", 0);
         // rotationalLowerP = SmartDashboard.getNumber("rotationalLowerP", 0);
-        // rotationalErrorThreshold =
-        // SmartDashboard.getNumber("rotationalErrorThreshold", 0);
-        // rotationalLowerPThreshold =
-        // SmartDashboard.getNumber("rotationalLowerPThreshold", 0);
-        SmartDashboard.putNumber("rotationalError", rotationalError);
-
-        lateralP = SmartDashboard.getNumber("lateralP", 0);
-        lateralI = SmartDashboard.getNumber("lateralI", 0);
-        lateralD = SmartDashboard.getNumber("lateralD", 0);
-        lateralFF = SmartDashboard.getNumber("lateralFF", 0);
-        lateralLowerPThreshold = SmartDashboard.getNumber("LateralLowerPThreshold", 0);
-        lateralLowerP = SmartDashboard.getNumber("LateralLowerP", 0);
-        lateralErrorThreshold = SmartDashboard.getNumber("lateralErrorThreshold", 0);
-        SmartDashboard.putNumber("lateralError", lateralError);
+        // rotationalLowerPThreshold = SmartDashboard.getNumber("rotationalLowerPThreshold", 0);
+        // rotationalErrorThreshold = SmartDashboard.getNumber("rotationalErrorThreshold", 0);
+        
+        desiredX = 0;
+        // lateralP = SmartDashboard.getNumber("lateralP", 0);
+        // lateralI = SmartDashboard.getNumber("lateralI", 0);
+        // lateralD = SmartDashboard.getNumber("lateralD", 0);
+        // lateralFF = SmartDashboard.getNumber("lateralFF", 0);
+        // lateralLowerP = SmartDashboard.getNumber("LateralLowerP", 0);
+        // lateralLowerPThreshold = SmartDashboard.getNumber("LateralLowerPThreshold", 0);
+        // lateralErrorThreshold = SmartDashboard.getNumber("lateralErrorThreshold", 0);
     }
 
     @Override
     public void execute() {
-        // Optional<Pose2d> estimatedPoseOptional = frontMiddleLimelight.getEstimatedPoseMT2();
-        // Pose2d estimatedPose = es    timatedPoseOptional.get();
+        rotationalError = drivetrain.getHeadingBlue() - desiredAngle;
+        SmartDashboard.putNumber("rotationalError", rotationalError);
 
-        rotationalError = drivetrain.getHeadingBlue()-desiredAngle;
-        if (rotationalError < rotationalLowerPThreshold) {
+        if (Math.abs(rotationalError) < rotationalLowerPThreshold) 
             rotationalPIDController.setP(rotationalLowerP);
-        } else {
+        else
             rotationalPIDController.setP(rotationalP);
-        }
 
-        if (rotationalError > rotationalErrorThreshold) {
+        if (Math.abs(rotationalError) > rotationalErrorThreshold) {
             rotation = rotationalPIDController.calculate(rotationalError) + Math.signum(rotationalError) * rotationalFF;
+            SmartDashboard.putNumber("rotational", rotation);
         }
 
-        //lateralError = estimatedPose.getX() - desiredX;
+        // Optional<Pose2d> estimatedPoseOptional = frontMiddleLimelight.getEstimatedPoseMT2();
+        // Pose2d estimatedPose = estimatedPoseOptional.get();
+        // lateralError = estimatedPose.getX() - desiredX;
         lateralError = frontMiddleLimelight.getTx() - desiredX;
-        if (lateralError > lateralLowerPThreshold)
+        SmartDashboard.putNumber("lateralError", lateralError);
+        System.out.println(frontMiddleLimelight.getTx());
+        
+        if (Math.abs(lateralError) < lateralLowerPThreshold)
             lateralPIDController.setP(lateralLowerP);
         else
             lateralPIDController.setP(lateralP);
 
-        if (lateralError > lateralErrorThreshold)
+        if (Math.abs(lateralError) > lateralErrorThreshold) {
             lateral = lateralPIDController.calculate(lateralError) + Math.signum(lateralError) * lateralFF;
+            SmartDashboard.putNumber("lateral", lateral);
+        }
+        else {
+            lateral = 0;
+        }
 
         drivetrain.drive(new Translation2d(0, lateral), rotation, true, null);
     }

@@ -9,19 +9,23 @@ import edu.wpi.first.math.util.Units;
 
 public class Constants {
     public static class HubAlignConstants {
-                public static final double kRotationalP = 0.1;
+        // TODO: TUNE MORE
+        public static final double kRotationalP = 0.1;
         public static final double kRotationalI = 0;
         public static final double kRotationalD = 0;
-        public static final double kRotationLowerP = 0.04;
-        public static final double kRotationalErrorThreshold = 0.5;
+        public static final double kRotationalLowerP = 0.04;
+        public static final double kRotationalErrorThreshold = 1;
         public static final double kRotationLowerPThreshold = 1.3;
         public static final double kRotationalFF = 0;
 
-        public static final double kLateralP = 0;
+        // TODO: TUNE MORE
+        public static final double kLateralP = 0.05;
         public static final double kLateralI = 0;
         public static final double kLateralD = 0;
         public static final double kLateralFF = 0;
-        public static final double kLateralErrorThreshold = 0;
+        public static final double kLateralErrorThreshold = 1;
+        public static final double kLateralLowerP = 0.01;
+        public static final double kLateralLowerPThreshold = 2;
 
         public static final double kDepthP = 0;
         public static final double kDepthI = 0;
@@ -60,10 +64,10 @@ public class Constants {
         public static final double kRotorToDistanceRatio = (Units.inchesToMeters(kWheelDiameterIn) * Math.PI) / kDriveMotorGearRatio;
 
         public class SteerMotor {
-            public final static double kP = 135;
+            public final static double kP = 50;
             public final static double kI = 0;
-            public final static double kD = 7;
-            public final static double kS = 0.13;
+            public final static double kD = 2;
+            public final static double kS = 0.1;
             public final static double kV = 0;
             public final static double kA = 0;
             public final static double kFF = 0;
